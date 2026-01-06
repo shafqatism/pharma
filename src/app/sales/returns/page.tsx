@@ -104,7 +104,23 @@ export default function SalesReturnsPage() {
     },
   ];
 
-  const handleCreateReturn = (values: unknown) => {
+  interface ReturnFormValues {
+    customerId: string;
+    returnDate: { format: (f: string) => string };
+    originalInvoice: string;
+    originalOrder: string;
+    returnType: "credit" | "replace";
+    reason: "expired" | "damaged" | "recall" | "excess" | "wrong_item";
+    itemId?: string;
+    itemCode: string;
+    itemName: string;
+    batchNumber: string;
+    expiryDate: string;
+    quantity: number;
+    unitPrice: number;
+  }
+
+  const handleCreateReturn = (values: ReturnFormValues) => {
     const customer = customers.find((c) => c.id === values.customerId);
     addSalesReturn({
       customerId: values.customerId,
@@ -114,7 +130,7 @@ export default function SalesReturnsPage() {
       returnDate: values.returnDate.format("YYYY-MM-DD"),
       items: [{
         id: `SRI${Date.now()}`,
-        itemId: values.itemId,
+        itemId: values.itemId || values.itemCode,
         itemCode: values.itemCode,
         itemName: values.itemName,
         batchNumber: values.batchNumber,

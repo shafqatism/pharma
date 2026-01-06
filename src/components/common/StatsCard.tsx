@@ -2,8 +2,17 @@
 
 import React from "react";
 import { Card, Row, Col, Typography } from "antd";
+import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
+
+interface SingleCardProps {
+  title: string;
+  value: number | string;
+  icon?: React.ReactNode;
+  trend?: { value: number; isPositive: boolean };
+  color?: string;
+}
 
 interface StatItem {
   key: string;
@@ -14,10 +23,12 @@ interface StatItem {
   suffix?: React.ReactNode;
 }
 
-interface StatsCardProps {
+interface MultiCardProps {
   stats: StatItem[];
   columns?: number;
 }
+
+type StatsCardProps = SingleCardProps | MultiCardProps;
 
 const colorMap: Record<string, { gradient: string; shadow: string }> = {
   "#1890ff": { gradient: "linear-gradient(135deg, #00BFFF 0%, #0090C0 100%)", shadow: "rgba(0, 191, 255, 0.35)" },
@@ -33,15 +44,86 @@ const colorMap: Record<string, { gradient: string; shadow: string }> = {
   "#722ed1": { gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)", shadow: "rgba(139, 92, 246, 0.35)" },
 };
 
-export default function StatsCard({ stats, columns = 4 }: StatsCardProps) {
-  const colSpan = 24 / columns;
+const getColors = (color?: string) => {
+  if (color && colorMap[color]) {
+    return colorMap[color];
+  }
+  return { gradient: "linear-gradient(135deg, #00BFFF 0%, #0090C0 100%)", shadow: "rgba(0, 191, 255, 0.35)" };
+};
 
-  const getColors = (color?: string) => {
-    if (color && colorMap[color]) {
-      return colorMap[color];
-    }
-    return { gradient: "linear-gradient(135deg, #00BFFF 0%, #0090C0 100%)", shadow: "rgba(0, 191, 255, 0.35)" };
-  };
+function SingleStatsCard({ title, value, icon, trend, color }: SingleCardProps) {
+  const colors = getColors(color);
+  
+  return (
+    <Card
+      className="stat-card"
+      style={{ borderRadius: 10, height: "100%" }}
+      styles={{ body: { padding: 16 } }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+        <div style={{ flex: 1 }}>
+          <Text
+            style={{
+              fontSize: 11,
+              color: "#64748b",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: 0.5,
+              display: "block",
+              marginBottom: 6,
+            }}
+          >
+            {title}
+          </Text>
+          <div
+            style={{
+              fontSize: 24,
+              fontWeight: 700,
+              color: "#1e293b",
+              letterSpacing: "-0.5px",
+              lineHeight: 1.2,
+            }}
+          >
+            {value}
+          </div>
+          {trend && (
+            <div style={{ marginTop: 6, display: "flex", alignItems: "center", gap: 4 }}>
+              {trend.isPositive ? (
+                <ArrowUpOutlined style={{ color: "#22c55e", fontSize: 12 }} />
+              ) : (
+                <ArrowDownOutlined style={{ color: "#ef4444", fontSize: 12 }} />
+              )}
+              <Text style={{ fontSize: 12, color: trend.isPositive ? "#22c55e" : "#ef4444" }}>
+                {trend.value}%
+              </Text>
+            </div>
+          )}
+        </div>
+        {icon && (
+          <div
+            style={{
+              width: 42,
+              height: 42,
+              borderRadius: 10,
+              background: colors.gradient,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#ffffff",
+              fontSize: 18,
+              boxShadow: `0 4px 12px ${colors.shadow}`,
+            }}
+          >
+            {icon}
+          </div>
+        )}
+      </div>
+    </Card>
+  );
+}
+
+function MultiStatsCard({ stats, columns = 4 }: MultiCardProps) {
+  const colSpan = 24 / columns;
 
   return (
     <Row gutter={[12, 12]}>
@@ -108,3 +190,11 @@ export default function StatsCard({ stats, columns = 4 }: StatsCardProps) {
     </Row>
   );
 }
+
+export default function StatsCard(props: StatsCardProps) {
+  if ("stats" in props) {
+    return <MultiStatsCard {...props} />;
+  }
+  return <SingleStatsCard {...props} />;
+}
+
