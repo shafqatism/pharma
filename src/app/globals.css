@@ -1,0 +1,700 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+  color: #1e293b;
+  min-height: 100vh;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Custom Scrollbar - Thin */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Sidebar Scrollbar */
+.ant-layout-sider ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ant-layout-sider ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Enhanced Sidebar Menu Styles - Compact */
+.ant-layout-sider .ant-menu-dark {
+  background: transparent !important;
+  font-size: 12px;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-item {
+  margin: 2px 0;
+  border-radius: 6px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 12px;
+  transition: all 0.15s ease;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-item:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-item-selected {
+  background: linear-gradient(135deg, rgba(0, 191, 255, 0.9) 0%, rgba(0, 144, 192, 0.9) 100%) !important;
+  box-shadow: 0 2px 8px rgba(0, 191, 255, 0.35);
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-item-selected::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  background: #fff;
+  border-radius: 0 2px 2px 0;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-submenu-title {
+  margin: 2px 0;
+  border-radius: 6px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 12px;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-submenu-title:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-item-icon,
+.ant-layout-sider .ant-menu-dark .ant-menu-submenu-title .ant-menu-item-icon {
+  font-size: 14px !important;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-sub {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 6px;
+  margin: 2px 6px;
+  padding: 4px 0;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-sub .ant-menu-item {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 20px !important;
+  margin: 1px 4px;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-sub .ant-menu-item-selected {
+  background: linear-gradient(135deg, rgba(0, 191, 255, 0.85) 0%, rgba(0, 144, 192, 0.85) 100%) !important;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-item,
+.ant-layout-sider .ant-menu-dark .ant-menu-submenu-title {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-item:hover,
+.ant-layout-sider .ant-menu-dark .ant-menu-submenu-title:hover {
+  color: #fff !important;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-item-selected {
+  color: #fff !important;
+}
+
+.ant-layout-sider .ant-menu-dark .ant-menu-submenu-arrow {
+  color: rgba(255, 255, 255, 0.35) !important;
+  font-size: 10px;
+}
+
+
+/* ============================================
+   DATATABLE ENHANCED STYLES
+   ============================================ */
+
+/* Table Container */
+.ant-table-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table Header - Attractive Gradient */
+.ant-table-thead > tr > th {
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  font-size: 10px !important;
+  letter-spacing: 0.8px;
+  color: #475569 !important;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  padding: 10px 12px !important;
+  white-space: nowrap;
+}
+
+.ant-table-thead > tr > th::before {
+  display: none !important;
+}
+
+/* Table Body Rows */
+.ant-table-tbody > tr > td {
+  font-size: 12px !important;
+  padding: 8px 12px !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  color: #334155;
+  transition: all 0.15s ease;
+}
+
+/* Row Hover - Gradient Effect */
+.ant-table-tbody > tr:hover > td {
+  background: linear-gradient(90deg, rgba(0, 191, 255, 0.06) 0%, rgba(0, 144, 192, 0.03) 100%) !important;
+}
+
+/* Alternating Row Colors */
+.ant-table-tbody > tr:nth-child(even) > td {
+  background: #fafbfc;
+}
+
+.ant-table-tbody > tr:nth-child(even):hover > td {
+  background: linear-gradient(90deg, rgba(0, 191, 255, 0.06) 0%, rgba(0, 144, 192, 0.03) 100%) !important;
+}
+
+/* Selected Row */
+.ant-table-tbody > tr.ant-table-row-selected > td {
+  background: rgba(0, 191, 255, 0.08) !important;
+}
+
+/* Table Actions Column */
+.ant-table-tbody > tr > td:last-child {
+  white-space: nowrap;
+}
+
+/* Table Pagination */
+.ant-table-pagination {
+  margin: 12px 0 !important;
+}
+
+.ant-pagination-item {
+  border-radius: 4px !important;
+  font-size: 11px !important;
+  min-width: 26px !important;
+  height: 26px !important;
+  line-height: 24px !important;
+}
+
+.ant-pagination-item-active {
+  background: linear-gradient(135deg, #00BFFF 0%, #0090C0 100%) !important;
+  border-color: transparent !important;
+}
+
+.ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+.ant-pagination-prev,
+.ant-pagination-next {
+  min-width: 26px !important;
+  height: 26px !important;
+  line-height: 24px !important;
+}
+
+.ant-pagination-options {
+  font-size: 11px !important;
+}
+
+/* Table Filter Dropdown */
+.ant-table-filter-dropdown {
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  padding: 8px;
+}
+
+/* Table Sorter Icons */
+.ant-table-column-sorter {
+  color: #94a3b8;
+}
+
+.ant-table-column-sorter-up.active,
+.ant-table-column-sorter-down.active {
+  color: #00BFFF;
+}
+
+/* Empty Table */
+.ant-table-placeholder {
+  padding: 32px !important;
+}
+
+.ant-empty-description {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+
+/* ============================================
+   CARD & COMPONENT STYLES - COMPACT
+   ============================================ */
+
+/* Stat Cards */
+.stat-card {
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px !important;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 191, 255, 0.1);
+  border-color: rgba(0, 191, 255, 0.25);
+}
+
+.stat-card .ant-card-body {
+  padding: 16px !important;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+  border-radius: 10px !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.dashboard-card .ant-card-head {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 12px 16px;
+  min-height: auto;
+  background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+}
+
+.dashboard-card .ant-card-head-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 13px;
+  padding: 0;
+}
+
+.dashboard-card .ant-card-extra {
+  font-size: 11px;
+  padding: 0;
+}
+
+.dashboard-card .ant-card-body {
+  padding: 16px;
+}
+
+/* Buttons - Compact */
+.ant-btn {
+  font-size: 12px;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.ant-btn-sm {
+  font-size: 11px;
+  height: 26px;
+  padding: 0 10px;
+}
+
+.ant-btn-primary {
+  background: linear-gradient(135deg, #00BFFF 0%, #0090C0 100%) !important;
+  border: none !important;
+  box-shadow: 0 2px 6px rgba(0, 191, 255, 0.25);
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(135deg, #00A8E0 0%, #0080A0 100%) !important;
+  box-shadow: 0 4px 10px rgba(0, 191, 255, 0.35);
+}
+
+/* Tags - Compact */
+.ant-tag {
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 10px;
+  padding: 1px 8px;
+  border: none;
+  line-height: 18px;
+}
+
+.ant-tag-green {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: #15803d;
+}
+
+.ant-tag-orange {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #b45309;
+}
+
+.ant-tag-red {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #dc2626;
+}
+
+.ant-tag-blue {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #2563eb;
+}
+
+.ant-tag-purple {
+  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+  color: #7c3aed;
+}
+
+.ant-tag-default {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: #475569;
+}
+
+.ant-tag-cyan {
+  background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%);
+  color: #0891b2;
+}
+
+/* Drawer - Compact */
+.ant-drawer-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+}
+
+.ant-drawer-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.ant-drawer-body {
+  padding: 16px 20px;
+}
+
+/* Form - Compact */
+.ant-form-item {
+  margin-bottom: 14px;
+}
+
+.ant-form-item-label > label {
+  font-weight: 500;
+  color: #475569;
+  font-size: 11px;
+  height: auto;
+}
+
+.ant-form-item-label {
+  padding-bottom: 4px !important;
+}
+
+/* Input - Compact */
+.ant-input,
+.ant-select-selector,
+.ant-picker {
+  font-size: 12px !important;
+  border-radius: 6px !important;
+}
+
+.ant-input:focus,
+.ant-input-focused,
+.ant-select-focused .ant-select-selector {
+  border-color: #00BFFF !important;
+  box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.1) !important;
+}
+
+/* Steps - Compact */
+.ant-steps-item-title {
+  font-size: 12px !important;
+}
+
+.ant-steps-item-description {
+  font-size: 11px !important;
+}
+
+.ant-steps-item-icon {
+  width: 26px !important;
+  height: 26px !important;
+  line-height: 26px !important;
+  font-size: 12px !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon,
+.ant-steps-item-process .ant-steps-item-icon {
+  background: linear-gradient(135deg, #00BFFF 0%, #0090C0 100%);
+  border-color: transparent;
+}
+
+/* Badge */
+.ant-badge-count {
+  font-size: 10px;
+  min-width: 16px;
+  height: 16px;
+  line-height: 16px;
+  padding: 0 4px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.35);
+}
+
+/* Avatar */
+.ant-avatar {
+  background: linear-gradient(135deg, #00BFFF 0%, #0090C0 100%);
+  font-size: 11px;
+}
+
+/* Progress Bar */
+.ant-progress-bg {
+  background: linear-gradient(90deg, #00BFFF 0%, #0090C0 100%) !important;
+}
+
+.ant-progress-text {
+  font-size: 11px !important;
+}
+
+/* Tabs - Compact */
+.ant-tabs-tab {
+  font-size: 12px !important;
+  padding: 8px 0 !important;
+}
+
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #00BFFF !important;
+  font-weight: 600;
+}
+
+.ant-tabs-ink-bar {
+  background: linear-gradient(90deg, #00BFFF 0%, #0090C0 100%) !important;
+  height: 2px !important;
+}
+
+/* Modal - Compact */
+.ant-modal-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 14px 20px;
+}
+
+.ant-modal-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.ant-modal-body {
+  padding: 16px 20px;
+}
+
+.ant-modal-footer {
+  padding: 12px 20px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* Statistic - Compact */
+.ant-statistic-title {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.ant-statistic-content-value {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 20px;
+}
+
+/* Descriptions - Compact */
+.ant-descriptions-bordered .ant-descriptions-item-label {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  font-weight: 500;
+  color: #64748b;
+  font-size: 11px;
+  padding: 8px 12px;
+}
+
+.ant-descriptions-bordered .ant-descriptions-item-content {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+/* Dropdown - Compact */
+.ant-dropdown-menu {
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  padding: 6px;
+}
+
+.ant-dropdown-menu-item {
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.ant-dropdown-menu-item:hover {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* List - Compact */
+.ant-list-item {
+  padding: 10px 0 !important;
+}
+
+.ant-list-item-meta-title {
+  font-size: 12px !important;
+  margin-bottom: 2px !important;
+}
+
+.ant-list-item-meta-description {
+  font-size: 11px !important;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.ant-typography h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: -0.3px;
+}
+
+/* Divider */
+.ant-divider {
+  margin: 12px 0;
+  font-size: 11px;
+}
+
+/* Upload */
+.ant-upload-wrapper {
+  font-size: 12px;
+}
+
+/* Switch */
+.ant-switch {
+  min-width: 36px;
+  height: 18px;
+}
+
+.ant-switch-handle {
+  width: 14px;
+  height: 14px;
+}
+
+/* Checkbox & Radio */
+.ant-checkbox-wrapper,
+.ant-radio-wrapper {
+  font-size: 12px;
+}
+
+/* Tooltip */
+.ant-tooltip-inner {
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+/* Popover */
+.ant-popover-inner {
+  border-radius: 8px;
+}
+
+.ant-popover-title {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ant-popover-inner-content {
+  font-size: 12px;
+}
+
+
+/* Chat Drawer Responsive Styles */
+.chat-drawer .ant-drawer-content-wrapper {
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.12) !important;
+}
+
+.chat-drawer .ant-drawer-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.chat-drawer .ant-drawer-header-title {
+  flex: 1;
+}
+
+.chat-drawer .ant-drawer-body {
+  padding: 0 !important;
+}
+
+.chat-drawer .ant-drawer-close {
+  margin-right: 8px;
+}
+
+@media (max-width: 480px) {
+  .chat-drawer .ant-drawer-content-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 481px) {
+  .chat-drawer .ant-drawer-content-wrapper {
+    width: 400px !important;
+  }
+}
+
+/* Chat Page Responsive */
+@media (max-width: 768px) {
+  .chat-page-container {
+    flex-direction: column !important;
+  }
+  
+  .chat-sidebar {
+    width: 100% !important;
+    height: 300px !important;
+    border-right: none !important;
+    border-bottom: 1px solid #e8e8e8 !important;
+  }
+  
+  .chat-info-panel {
+    display: none !important;
+  }
+}
